@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAuteurLivreTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAuteurLivreLabel_id}"/>
+                    <h:outputText value="#{auteurLivreController.selected.id}" title="#{bundle.ViewAuteurLivreTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLivreLabel_auteur}"/>
+                    <h:outputText value="#{auteurLivreController.selected.auteur}" title="#{bundle.ViewAuteurLivreTitle_auteur}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLivreLabel_livre}"/>
+                    <h:outputText value="#{auteurLivreController.selected.livre}" title="#{bundle.ViewAuteurLivreTitle_livre}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLivreLabel_type}"/>
+                    <h:outputText value="#{auteurLivreController.selected.type}" title="#{bundle.ViewAuteurLivreTitle_type}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{auteurLivreController.destroyAndView}" value="#{bundle.ViewAuteurLivreDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAuteurLivreEditLink}"/>
+                <br />
+                <h:commandLink action="#{auteurLivreController.prepareCreate}" value="#{bundle.ViewAuteurLivreCreateLink}" />
+                <br />
+                <h:commandLink action="#{auteurLivreController.prepareList}" value="#{bundle.ViewAuteurLivreShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAuteurLivreIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

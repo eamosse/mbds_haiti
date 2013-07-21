@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAuteurLivreTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAuteurLivreLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{auteurLivreController.selected.id}" title="#{bundle.CreateAuteurLivreTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateAuteurLivreLabel_auteur}" for="auteur" />
+                    <h:selectOneMenu id="auteur" value="#{auteurLivreController.selected.auteur}" title="#{bundle.CreateAuteurLivreTitle_auteur}" >
+                        <f:selectItems value="#{auteurController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAuteurLivreLabel_livre}" for="livre" />
+                    <h:selectOneMenu id="livre" value="#{auteurLivreController.selected.livre}" title="#{bundle.CreateAuteurLivreTitle_livre}" >
+                        <f:selectItems value="#{livreController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAuteurLivreLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{auteurLivreController.selected.type}" title="#{bundle.CreateAuteurLivreTitle_type}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{auteurLivreController.create}" value="#{bundle.CreateAuteurLivreSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{auteurLivreController.prepareList}" value="#{bundle.CreateAuteurLivreShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAuteurLivreIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
